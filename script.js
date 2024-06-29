@@ -1,9 +1,17 @@
-const toggleBtn = document.querySelector('.toggle_btn');
-const toggleBtnIcn = document.querySelector('.toggle_btn i');
-const dropDownMenu = document.querySelector('.dropdown_menu');
+let inputs = document.getElementById("inp");
+let text = document.querySelector(".text");
 
-toggleBtn.onclick = function() {
-    dropDownMenu.classList.toggle('open')
+function Add(){
+    if(inputs.value == ""){
+        alert("Please Enter Task")
+    }else{
+        let newEle = document.createElement("ul");
+        newEle.innerHTML=`${inputs.value} <i class="ri-delete-bin-5-line"></i>`;
+        text.appendChild(newEle);
+        inputs.value="";
+        newEle.querySelector("i").addEventListener("click" , remove);
+        function remove(){
+            newEle.remove()
+        }
+    }
 }
-
-
